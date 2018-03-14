@@ -1,4 +1,4 @@
-//this consist only input for the process
+//This consist of finding need matrix.
 #include<stdio.h>
 void main()
 {
@@ -38,6 +38,17 @@ for(i=0;i<n;i++)
         scanf("%d",&max[i][j]);
     }
 }
+printf("\n The need matrix is as follows : \n");
+for(i=0;i<n;i++)
+{
+    for(j=0;j<r;j++)
+    {
+        need[i][j]= max[i][j]-allocation[i][j];
+        printf("\t %d",need[i][j]);
+    }
+    printf("\n");
+}
+
 getch();
 
 }
