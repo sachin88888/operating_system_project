@@ -1,5 +1,6 @@
-//This consist of finding need matrix.
+//this consist of finding safe sequence
 #include<stdio.h>
+#include<stdbool.h>
 void main()
 {
 int allocation[10][5],max[10][5],need[10][5],available[3],flag[10],sq[10];
@@ -47,6 +48,51 @@ for(i=0;i<n;i++)
         printf("\t %d",need[i][j]);
     }
     printf("\n");
+}
+while(count1 < n) {
+  bool outerbreak = false;
+  for(k=0;k<n;k++)
+  {
+      bool seq_found = false;
+      for(i=0;i<n;i++)
+      {
+          if(flag[i]==0)
+          {
+            count=0;
+            for(j=0;j<r;j++)
+            {
+               if(available[j]>=need[i][j])
+               count++;
+            }
+            if(count==r)
+            {
+               count1++;
+               flag[i]=1;
+               sq[count1-1]=i;
+               seq_found = true;
+               for(j=0;j<r;j++)
+               {
+                   available[j]=available[j]+allocation[i][j];
+               }
+            }
+         }
+     }
+  }
+};
+
+if(count1==n)
+{
+   printf("\n *******************IT'S A SAFE STATE*******************");
+   printf("\n The safe sequence is....\n");
+   for(i=0;i<n;i++)
+       printf("\t P%d",sq[i]);
+   printf("\n");
+   printf("\n The available matrix is now : ");
+   for(i=0;i<r;i++)
+       printf("\t %d",available[i]);
+} 
+else {
+    printf("\n---------------IT'S AN UNSAFE STATE---------------");
 }
 
 getch();
