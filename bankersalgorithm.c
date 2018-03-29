@@ -1,6 +1,9 @@
-//this consist of finding safe sequence
+//In this thread is created
 #include<stdio.h>
 #include<stdbool.h>
+#include<pthread.h>
+int X=10;
+pthread_t t[10]; 
 void main()
 {
 int allocation[10][5],max[10][5],need[10][5],available[3],flag[10],sq[10];
@@ -96,5 +99,14 @@ else {
 }
 
 getch();
+
+for(i=0;i<n;i++)
+{
+    printf("\nP%d has entered... ",sq[i]);
+    pthread_create(&t[sq[i]],NULL,&myfun,NULL);
+    pthread_join(t[sq[i]],NULL);
+    printf("\nP%d has finished working\n",sq[i]);
+    
+}
 
 }
