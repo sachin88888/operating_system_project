@@ -1,9 +1,18 @@
-//In this thread is created
+//This the last and final program in which Bankers algorithm is implemented using threads and mutex lock.
 #include<stdio.h>
 #include<stdbool.h>
 #include<pthread.h>
 int X=10;
 pthread_t t[10]; 
+pthread_mutex_t l;
+
+void myfun(){
+    pthread_mutex_lock(&l);
+    printf("\ndoing the work...");
+    pthread_mutex_unlock(&l);
+    
+}
+
 void main()
 {
 int allocation[10][5],max[10][5],need[10][5],available[3],flag[10],sq[10];
